@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+		<!-- Boostrap for sapUI5 -->
+		
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+		
+		<script>
+		
+		// Application segment on sapui5
+		
+		// JSON Notation
+		
+			var oButton = new sap.ui.commons.Button({
+									text : "Click me",
+									press : handleButtonClicked
+			});
+		
+		// Alternatively : getter and setter functions
+			
+			var oButton2 = new sap.ui.commons.Button( );
+				oButton2.setText("Click me 2");
+				oButton2.attachPress(handleButtonClicked2);
+			
+			function handleButtonClicked(){
+				
+				alert("Pressed by Button1");
+			}
+			
+			function handleButtonClicked2(){
+				
+				alert("Pressed by button2");
+				
+			}
+			
+			oButton.placeAt("content");
+			oButton2.placeAt("content");
+	
+		</script>
+
+	</head>
+	
+	<!-- UI area for sapui5 application -->
+	
+		<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>
