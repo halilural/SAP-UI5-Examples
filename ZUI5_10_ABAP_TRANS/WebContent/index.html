@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal"
+				data-sap-ui-language="TR">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+//		var sLangu = function(){
+//		var sPageURL = window.location.search.substring(1);
+//		var sURLVariables = sPageURL.split('&');
+//		
+//		for(var i = 0 ; i < sURLVariables.length ; i++)
+//		{
+//			
+//			var sParameterName = sURLVariables[i].split('=');
+//			
+//			if(sParameterName[0] == 'sap-ui-language'){
+//				
+//				return sParameterName[1];
+//			}
+//			
+//		}
+//	};
+	
+	// you can take sLangu values from sap.ui.core this way 
+	
+	var sLangu = sap.ui.getCore().getConfiguration().getLanguage();
+	
+	// This above function determines the language of sap backend system's language properly and
+	// you can use it when you do internalization functions where they use.
+	
+	this.oLangu = new sap.ui.model.resource.ResourceModel(
+			{bundleUrl : "translations/translation.properties",
+			"bundleLocale":sLangu});
+	
+	sap.ui.getCore().setModel(this.oLangu,"i18n");
+	
+	//	Layout
+	
+	var oMatrix = new sap.ui.commons.layout.MatrixLayout({
+			layoutFixed : true,
+			width: '400px',
+			columns : 4 ,
+			widths : ['200px', '200px',] 
+		});
+	
+	var oText = new sap.ui.commons.TextView({
+			text : "{i18n>BUKRS}"
+});	
+	
+	var oText2 = new sap.ui.commons.TextView({
+		text : "{i18n>MD}"
+});	
+	
+	oMatrix.createRow(oText , oText2);
+	
+	oMatrix.placeAt("content");
+			
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>
