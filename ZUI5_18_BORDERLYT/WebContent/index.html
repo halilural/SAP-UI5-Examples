@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+		<style type="text/css">
+			.sapUiBorderLayoutTop { background-color: #F0AB00;}
+			.sapUiBorderLayoutBegin { background-color: #e2001a;}
+			.sapUiBorderLayoutCenter { background-color: #009ee0;}
+			.sapUiBorderLayoutEnd { background-color: #00a02f;}
+			.sapUiBorderLayoutBottom { background-color: #933588;}
+		
+		</style>
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+		// Border Layout
+		
+		var oBorderLayout = new sap.ui.commons.layout.BorderLayout({
+					width  : "800px",
+					height : "400px",
+					top: new sap.ui.commons.layout.BorderLayoutArea({
+						size : "20%",
+						contentAlign : "center" ,
+						content : [new sap.ui.commons.TextView(
+								{text : '"Top" - Area'})]
+					}),
+					begin: new sap.ui.commons.layout.BorderLayoutArea({
+						size :"20%",
+						contentAlign : "left",
+						content : [new sap.ui.commons.TextView(
+								{text : '"Begin" - Area'})]
+					}),
+					center: new sap.ui.commons.layout.BorderLayoutArea({
+						contentAlign : "center",
+						content : [new sap.ui.commons.TextView(
+								{text : '"Center" - Area'})]
+					}),
+					end: new sap.ui.commons.layout.BorderLayoutArea({
+						size :"20%",
+						contentAlign : "right",
+						content : [new sap.ui.commons.TextView(
+								{text : '"End" - Area'})]
+					}),
+					bottom: new sap.ui.commons.layout.BorderLayoutArea({
+						size :"10%",
+						contentAlign : "center",
+						content : [new sap.ui.commons.TextView(
+								{text : '"Bottom" - Area'})]
+					}),
+					
+		});
+		
+		oBorderLayout.placeAt('content');
+					
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

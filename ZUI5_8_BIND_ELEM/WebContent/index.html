@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons,sap.ui.table"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+			var oModel = new sap.ui.model.json.JSONModel();
+				oModel.loadData("json/menu.json");
+				
+				sap.ui.getCore().setModel(oModel);
+				
+				//Table with weekdays
+				
+				var oTable = new sap.ui.table.Table({
+					width : "100%",
+					title : "Weekdays",
+					visibleRowCount : 5,
+					selectionMode : sap.ui.table.SelectionMode.Single,
+					editable : false
+				});
+				
+				oTable.addColumn(new sap.ui.table.Column({
+					label : new sap.ui.commons.Label({ text : "ID" }),
+					template : new sap.ui.commons.TextField({ value : "{id}" }),
+					visible : false
+				}));
+				
+				oTable.addColumn(new sap.ui.table.Column({
+					label : new sap.ui.commons.Label({ text : "Weekday" }),
+					template : new sap.ui.commons.TextField({ value : "{day}" })
+				}));
+				
+				oTable.addColumn(new sap.ui.table.Column({
+					label : new sap.ui.commons.Label({ text : "No Meals" }),
+					template : new sap.ui.commons.TextField({ value : "{no_meals}" })
+				}));
+				
+				oTable.bindRows("/weekdays");
+				oTable.placeAt("master");
+				
+				// Display of meals
+				
+				var oTable2 = new sap.ui.table.Table({
+					width : "100%",
+					title : "Meals",
+					visibleRowCount : 3,
+					selectionMode : sap.ui.table.SelectionMode.Single,
+					editable : false
+				});
+				
+				oTable2.addColumn(new sap.ui.table.Column({  
+					label: new sap.ui.commons.Label({text: "Meal"}),
+					template: new sap.ui.commons.TextField({value:"{dayId}"}),  
+					}));
+				oTable2.addColumn(new sap.ui.table.Column({  
+					label: new sap.ui.commons.Label({text: "Description"}),
+					template: new sap.ui.commons.TextField({value:"{items}"}),  
+					}));
+				
+				oTable2.bindRows("/meals");
+				oTable2.placeAt("slave");
+				
+				oTable.attachRowSelectionChange(function(oEvent){
+					// Read binding context of main table
+					var selectedRowContext = oEvent.getParameter("rowContext");
+					
+					var selectedClientId = oModel.getProperty("id", selectedRowContext);
+					
+					// Filter meals depending on context
+					
+					var listBinding = oTable2.getBinding();
+					
+					var oFilter = new sap.ui.model.Filter(
+										"dayId",
+										sap.ui.model.FilterOperator.EQ,
+										selectedClientId);
+					
+					listBinding.filter(oFilter);
+					
+				});
+				
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="master"></div>
+		<div id="slave"></div>
+	</body>
+</html>

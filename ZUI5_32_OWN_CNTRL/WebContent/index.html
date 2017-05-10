@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+		// Weather Control	--->>> MY OWN CONTROL
+		
+		sap.ui.core.Control.extend("my.Weather",
+				{
+				// metadata : {} , // is not required here
+				
+				renderer : function (oRm, oControl){
+					
+					oRm.write('<div '); 
+					oRm.write('id="cont_91dc83186187189b720bf75e94dabe06"> ');  
+					oRm.write('<span id="');  
+					oRm.write('h_91dc83186187189b720bf75e94dabe06">'); 
+					oRm.write('Weather New York</span> ');  
+					oRm.write('<script type="text/javascript" ');  
+					oRm.write('src="http://www.theweather.com/wid_loader/');  
+					oRm.write('91dc83186187189b720bf75e94dabe06">');  
+					oRm.write("\<\/script>");
+					
+				}
+				});
+		
+		var oWeather = new my.Weather();
+		oWeather.placeAt("content");
+			
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

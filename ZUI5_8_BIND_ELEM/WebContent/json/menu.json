@@ -1,0 +1,24 @@
+{
+	"weekdays": [{
+		"day": "Monday",
+		"no_meals": "2",
+		"id": "1"
+	}, {
+		"day": "Tuesday",
+		"no_meals": "3",
+		"id": "2"
+	}],
+	"meals": [{
+		"MealNo": "1",
+		"dayId": "1",
+		"items": "Burger with french fries"
+	}, {
+		"MealNo": "2",
+		"dayId": "1",
+		"items": "French fries with Burger"
+	}, {
+		"MealNo": "3",
+		"dayId": "2",
+		"items": "French fries"
+	}]
+}

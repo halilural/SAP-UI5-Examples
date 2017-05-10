@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+			
+			// Absolute Layout 
+			
+			var oMap  = new sap.ui.commons.layout.AbsoluteLayout();
+			
+			// USMAP's resolution is setting according to its width and its height .
+			
+			oMap.setWidth("1119px");
+			oMap.setHeight("725px");
+			
+			// US image 
+			
+			oImage = new sap.ui.commons.Image({
+					src : "img/usa.gif"
+			});
+			
+			oMap.addContent(oImage);
+			
+			// Position layout on the page 
+			
+			oMap.placeAt("content");
+			
+			// Funciton block //////
+			
+			function showCoords(event) {
+    			var x = event.clientX;
+    			var y = event.clientY;
+    			var coords = "X coords: " + x + ", Y coords: " + y;
+				console.log(coords);
+			}
+			
+			// Mark cities on the USA Map
+			var addCity = function(oPosition , sName , sPopulation){
+				
+				var oImage = new sap.ui.commons.Image({
+						src : "img/dot.png",
+						width : "25px" , 
+						height : "25px" ,
+						decorative : false
+				});
+				
+				var oName = new sap.ui.commons.TextView({
+						text : sName
+				});
+				
+			var showPopulation = function( ){
+				var oDialog1 = new sap.ui.commons.Dialog();
+				
+				oDialog1.setTitle(sName);
+				
+				var oText = new sap.ui.commons.TextView({
+							text : sPopulation
+				});
+				
+				oDialog1.addContent(oText);
+				oDialog1.addButton(new sap.ui.commons.Button({
+							text : "OK",
+							press : function() {
+								oDialog1.close();
+							}
+				}));
+				
+				oDialog1.open();
+				
+			};
+			
+			oImage.attachPress(showPopulation);
+		
+			// Creating new position for city's text
+			
+			var oPositionText  = {
+					left : oPosition.left ,
+					top  : ( parseInt(oPosition.top.split("p")[0]) + 23 ).toString() + "px"
+			}	
+						
+			oMap.addContent(oImage, oPosition).addContent(oName, oPositionText);
+
+			};
+			
+			// Cities
+			
+			addCity({
+				left : "117px",
+				top  : "61px",},
+				"SEATTLE", "3.502.000");
+			addCity({
+				left : "57px",
+				top  : "286px",},
+				"SAN FRANCISCO", "3.502.000");
+			addCity({
+				left : "115px",
+				top  : "428px",},
+				"LOS ANGELES", "3.502.000");
+			addCity({
+				left : "234px",
+				top  : "478px",},
+				"PHOENIX", "3.502.000");
+			addCity({
+				left : "411px",
+				top  : "314px",},
+				"DENVER", "3.502.000");
+			addCity({
+				left : "615px",
+				top  : "181px",},
+				"MINNEAPOLIS", "3.502.000");
+			addCity({
+				left : "711px",
+				top  : "259px",},
+				"CHICAGO", "3.502.000");
+			addCity({
+				left : "674px",
+				top  : "347px",},
+				"ST.LOUIS", "3.502.000");
+			addCity({
+				left : "523px",
+				top  : "488px",},
+				"DALLAS", "3.502.000");
+			addCity({
+				left : "567px",
+				top  : "576px",},
+				"HOUSTON", "3.502.000");
+			addCity({
+				left : "676px",
+				top  : "565px",},
+				"NEW ORLEANS", "3.502.000");
+			addCity({
+				left : "805px",
+				top  : "452px",},
+				"ATLANTA", "3.502.000");
+			addCity({
+				left : "913px",
+				top  : "630px",},
+				"MIAMI", "3.502.000");
+			addCity({
+				left : "940px",
+				top  : "293px",},
+				"WASHINGTON", "3.502.000");
+			addCity({
+				left : "979px",
+				top  : "253px",},
+				"NEWYORK", "3.502.000");
+			// ... 
+			
+
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content" onclick="showCoords(event)"></div>
+	</body>
+</html>

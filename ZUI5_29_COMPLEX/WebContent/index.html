@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+		// Fix Matrix Layout  as outer Layout
+		
+		var oMatrix = new sap.ui.commons.layout.MatrixLayout({
+				layoutFixed : true,
+				width : '800px',
+				columns : 2,
+				widths : ['200px','600px']
+		});
+		
+		// ApplicationHeader //////////////////////////////////////
+		
+		var oTextView = new sap.ui.commons.TextView({
+					text : "Application Header",
+					design : sap.ui.commons.TextViewDesign.H2
+		});
+		
+		// ApplicationHeader Control
+		
+		var oAppHeader = new sap.ui.commons.ApplicationHeader({
+				logoText : "Application Header",
+				displayLogoff : true,
+				userName  : "Halil Ural",
+				displayWelcome : true
+		});
+		
+		oMatrix.createRow(oTextView,oAppHeader);
+		
+		// Menubar //////////////////////////////////////////////////
+		
+		var oTextView = new sap.ui.commons.TextView({
+					text : "Menu Bar",
+					design : sap.ui.commons.TextViewDesign.H2
+		});
+		
+		var oMenuBar = new sap.ui.commons.MenuBar();
+		
+		var oMenuBarItem1 = new sap.ui.commons.MenuItem({
+				text : "Menu 1"
+		});
+		
+		oMenuBar.addItem(oMenuBarItem1);
+		
+		var oMenuBarItem2 = new sap.ui.commons.MenuItem({
+				text : "Menu 2"
+		});
+		
+		oMenuBar.addItem(oMenuBarItem2);
+		
+		var oMenu = new sap.ui.commons.Menu();
+		
+		oMenuBarItem1.setSubmenu(oMenu);
+		
+		// Sub menu
+		
+		var oMenuItem1 = new sap.ui.commons.MenuItem({
+			text : "Submenu 1"
+		});
+		
+		oMenu.addItem(oMenuItem1);
+		
+		var oMenuItem2 = new sap.ui.commons.MenuItem({
+			text : "Submenu 2"
+		});
+		
+		oMenu.addItem(oMenuItem2);
+		
+		oMatrix.createRow(oTextView,oMenuBar);
+		
+		// Toolbar ///////////////////////////////////////////////////
+		
+		var oTextView = new sap.ui.commons.TextView({
+				text : "Tool Bar",
+				design : sap.ui.commons.TextViewDesign.H2
+		});
+		
+		var oToolBar = new sap.ui.commons.Toolbar();
+		
+		var oButton = new sap.ui.commons.Button({
+				text : "Button 1"
+		});
+		
+		oToolBar.addItem(oButton);
+		
+		// Separator
+		
+		oToolBar.addItem(new sap.ui.commons.ToolbarSeparator());
+		
+		var oComboBox = new sap.ui.commons.ComboBox({
+				items : [ new sap.ui.core.ListItem({
+					text : "Combo 1"}),
+						  new sap.ui.core.ListItem({
+							 text : "Combo 2"
+							 })]
+		});
+		
+		oToolBar.addItem(oComboBox);
+		
+		var oButton = new sap.ui.commons.Button({
+				text : "Button 2"
+		});
+		
+		oToolBar.addItem(oButton);
+		
+		oMatrix.createRow(oTextView,oToolBar);
+		
+		
+		//Segmented Button /////////////////////////////////////////
+		
+		var oTextView = new sap.ui.commons.TextView({
+				text : "Segmented Button",
+				design : sap.ui.commons.TextViewDesign.H2
+		});
+		
+		var oSegmentedButton = new sap.ui.commons.SegmentedButton({
+				buttons : [ new sap.ui.commons.Button({
+					text : "Segment 1"
+				}), new sap.ui.commons.Button({
+					text : "Segment 2"
+				}), new sap.ui.commons.Button({
+					text : "Segment 3"
+				})]
+		});
+		
+		oMatrix.createRow(oTextView,oSegmentedButton);
+		
+		// RoadMap //////////////////////////////////////////////////
+		
+		var oTextView = new sap.ui.commons.TextView({
+				text : "RoadMap",
+				design : sap.ui.commons.TextViewDesign.H2
+		});
+		
+		var oRoadMap = new sap.ui.commons.RoadMap({
+				steps : [ new sap.ui.commons.RoadMapStep({
+					label : "Step 1"
+				}), new sap.ui.commons.RoadMapStep({
+					label : "Step 2"
+				}), new sap.ui.commons.RoadMapStep({
+					label : "Step 3"
+				})  ]
+		});
+		
+		oMatrix.createRow(oTextView,oRoadMap);
+		
+ 		oMatrix.placeAt("content");
+			
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

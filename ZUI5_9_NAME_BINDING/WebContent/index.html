@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal"
+				data-sap-ui-xx-bindingSyntax = "complex">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+			// Create instance of jsom model
+			
+			var oModel = new sap.ui.model.json.JSONModel();
+			
+			// Create Json
+			
+			oModel.setJSON(      
+				'{ "data": [{"TITLE": "Mr.",'+      
+				'"FNAME": "John", "LNAME": "Doe"},' +      
+			    '{"TITLE": "Mrs.", "FNAME": "Jane",  '+      
+				'"LNAME": "Doe"}, '+
+				'{"TITLE": "Mr.", "FNAME": "Halil",  '+      
+				'"LNAME": "Ural"}]}');
+		
+			//Bind model to core
+			
+			sap.ui.getCore().setModel(oModel);
+			
+			//Complex Binding
+			
+			var oItemTemplate = new sap.ui.core.ListItem({
+					text : "{TITLE} {FNAME} {LNAME}"
+			});
+		
+			var oComboBox = new sap.ui.commons.ComboBox({
+					items : {path: "/data",
+					template : oItemTemplate}
+			});
+			
+			oComboBox.placeAt("content");
+			
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

@@ -1,0 +1,11 @@
+{
+	"week": [{
+		"we_day": "Monday",
+		"we_comment": "Garfield says: I hate Mondays!",
+		"we_rating": 4
+	}, {
+		"we_day": "Tuesday",
+		"we_comment": "At least it's not Monday",
+		"we_rating": 1
+	}]
+}

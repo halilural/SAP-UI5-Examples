@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+		// Create instance of JSON Model
+		
+		var oModel = new sap.ui.model.json.JSONModel();
+		
+		// Load Json in model
+		
+		oModel.loadData("json/week.json");
+		
+		sap.ui.getCore().setModel(oModel);
+		
+		// Fix Matrix Layout 
+		
+		var oMatrixLayout = new sap.ui.commons.layout.MatrixLayout({
+				layoutFixed  : true ,
+				width : '800px' ,
+				columns : 2,
+				widths : [ '200px' , '600px' ]
+		});
+		
+		// AutoComplete ////////////////////////////////////////////
+		
+		var oTextView = new sap.ui.commons.TextView({
+				text : "AutoComplete",
+				design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		var oAuto = new sap.ui.commons.AutoComplete({
+				tooltip :  "Enter Weekday" ,
+				items : {
+					 path : "/week" , 
+					 template : new sap.ui.core.ListItem({
+						 text : "{we_day}"
+					 })
+				}
+		});
+		
+		oAuto.setModel(oModel);
+		
+		oMatrixLayout.createRow(oTextView,oAuto);
+		
+		// ComboBox ////////////////////////////////////
+		
+		var oTextView2 = new sap.ui.commons.TextView({
+				text : "Combobox",
+				design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		var oComboBox = new sap.ui.commons.ComboBox();
+		
+		oComboBox.setModel(oModel);
+		
+		var oItemTemplate = new sap.ui.core.ListItem();
+		
+		oItemTemplate.bindProperty("text", "we_day");
+		
+		oComboBox.bindItems("/week",oItemTemplate);
+		
+		oMatrixLayout.createRow(oTextView2,oComboBox);
+		
+		// Datepicker /////////////////////////////////////
+		
+		var oTextView3 = new sap.ui.commons.TextView({
+				text : "DatePicker",
+				design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		var date = new Date();
+		
+		var properlyFormatted = date.getFullYear()
+							+ ("0"  + (date.getMonth() + 1)).slice(-2)
+							+ ("0"  + date.getDate()).slice(-2);
+		
+		var oDatePicker = new sap.ui.commons.DatePicker();
+		
+		oDatePicker.setYyyymmdd(properlyFormatted);
+		
+		oDatePicker.setLocale("en-US");
+		
+		oMatrixLayout.createRow(oTextView3,oDatePicker);
+		
+		// DropdownBox	/////////////////////////////////////
+		
+		var oTextView4 = new sap.ui.commons.TextView({
+				text : "DropDownBox",
+				design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		var oDropdownBox = new sap.ui.commons.DropdownBox();
+		
+		oDropdownBox.setModel(oModel);
+		
+		var oItemTemplate = new sap.ui.core.ListItem();
+		
+		oItemTemplate.bindProperty("text","we_day");
+		
+		oDropdownBox.bindItems("/week",oItemTemplate);
+		
+		oMatrixLayout.createRow(oTextView4, oDropdownBox);
+		
+		// File Upload ///////////////////////////////////////
+		
+		var oTextView5 =  new sap.ui.commons.TextView({
+					text : "File Upload" , 
+					design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		var oSimpleFileUploader = new sap.ui.commons.FileUploader({
+				uploadUrl : "ui5/",
+				name : "simpleUploader",
+				uploadOnChange : true
+		});
+		
+		oMatrixLayout.createRow(oTextView5,oSimpleFileUploader);
+		
+		// ListBox ///////////////////////////////////////////////
+		
+		var oTextView6  = new sap.ui.commons.TextView({
+					text : "ListBox",
+					design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		// Template for binding 
+		
+		var oItemTemplate = new sap.ui.core.ListItem();
+		
+		oItemTemplate.setModel(oModel);
+		
+		oItemTemplate.bindProperty("text","we_day");
+		
+		var oListBox = new sap.ui.commons.ListBox();
+		
+		oListBox.bindAggregation("items","/week", oItemTemplate);
+		
+		oMatrixLayout.createRow(oTextView6,oListBox);
+		
+		// Password Field //////////////////////////////////////
+		
+		var oTextView7 = new sap.ui.commons.TextView({
+					text : "Password Field",
+					design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		oPassWord = new sap.ui.commons.PasswordField();
+		
+		oMatrixLayout.createRow(oTextView7,oPassWord);
+		
+		// Radio Button /////////////////////////////////////////////
+		
+		var oTextView8 =  new sap.ui.commons.TextView({
+					text : "Radio Button",
+					design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		// Template for binding 
+		
+		var oItemTemplate = new sap.ui.core.Item();
+		
+		oItemTemplate.setModel(oModel);
+		
+		oItemTemplate.bindProperty("text","we_day");
+		
+		// Radio Button
+		
+		var oRadioButton = new sap.ui.commons.RadioButtonGroup();
+		
+		oRadioButton.bindAggregation("items", "/week", oItemTemplate);
+		
+		oMatrixLayout.createRow(oTextView8,oRadioButton);
+		
+		// SearchField
+		
+		var oTextView9 = new sap.ui.commons.TextView({
+					text : "SearchField",
+					design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		var oSearch = new sap.ui.commons.SearchField();
+		
+		oMatrixLayout.createRow(oTextView9,oSearch);
+		
+		// TextArea ///////////////////////////////////////////////
+		
+		var oTextView10 = new sap.ui.commons.TextView({
+						text : "TextArea",
+						design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		oTextArea = new sap.ui.commons.TextArea();
+		
+		oTextArea.setRows(3);
+		
+		oMatrixLayout.createRow(oTextView10,oTextArea);
+		
+		// TextField /////////////////////////////////////////////////
+		
+		var oTextView11 = new sap.ui.commons.TextView({
+					text : "TextField",
+					design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		var oTextField = new sap.ui.commons.TextField();
+		
+		oMatrixLayout.createRow(oTextView11,oTextField);
+		
+		// CheckBox	///////////////////////////////////////////////////
+		
+		var oTextView12 = new sap.ui.commons.TextView({
+				text : "CheckBox",
+				design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		var oCheckBox = new sap.ui.commons.CheckBox();
+		
+		oMatrixLayout.createRow(oTextView12,oCheckBox);
+		
+		//ValueHelpField ////////////////////////////////////////////
+		
+		var oTextView13 = new sap.ui.commons.TextView({
+				text : "ValueHelpField",
+				design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		var oValueHelp = new sap.ui.commons.ValueHelpField();
+		
+		oMatrixLayout.createRow(oTextView13,oValueHelp);
+		
+		oMatrixLayout.placeAt("content");
+		
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

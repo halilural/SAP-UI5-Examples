@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	
+		<title>Themes in SAPUI5</title>
+		
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/> 
+		
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_goldreflection">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+			
+
+		<script>
+		
+		//Layout
+		
+			var oMatrix = new sap.ui.commons.layout.MatrixLayout({
+					layoutFixed : true,
+					width : '800px',
+					columns : 4,
+					widths : [ '200px' , '200px' ,'200px' ,'200px']	
+			});
+		
+		//Buttons for switching themes
+			var oButton_sg = new sap.ui.commons.Button("GOLD",{
+					text : "Goldreflection theme",
+					press : function(oEvent){ changeTheme(oEvent);}
+		});
+			var oButton_sp  = new sap.ui.commons.Button("PLAT",{
+				text : "Platinum  theme",
+				press : function(oEvent){ changeTheme(oEvent);}
+		});
+			var oButton_sb  = new sap.ui.commons.Button("BLUE",{
+				text : "Blue Crystal",
+				press : function(oEvent){ changeTheme(oEvent);}
+		});
+			var oButton_sh  = new sap.ui.commons.Button("HIGH",{
+				text : "High Contrast Black",
+				press : function(oEvent){ changeTheme(oEvent);} 
+		});
+			
+		oMatrix.createRow(oButton_sg,oButton_sp,
+						  oButton_sb,oButton_sh);
+		
+		// Small form for better clarity of theme
+		//Page content heading and a small form 
+		
+		 var oCell = new sap.ui.commons.layout.MatrixLayoutCell({ 
+				colSpan : 4  
+		 });
+		
+		var oTV = new sap.ui.commons.TextView({
+			text : 'Contact',
+			vdesign : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		oCell.addContent(oTV);
+		oMatrix.createRow(oCell);
+		
+		var oLabel = new sap.ui.commons.Label({
+				text : 'Name'
+		});
+		
+		var oTF = new sap.ui.commons.TextField({
+				editable : false,
+				value : 'Doe',
+				width : '200px'
+		});
+		
+		oLabel.setLabelFor(oTF);
+		oMatrix.createRow(oLabel,oTF);
+		
+		// ... abbreviated ...
+		
+		oMatrix.placeAt('content');
+		
+		// Functions
+		
+		 function changeTheme(oEvent) {
+				
+			var sTheme = oEvent.getSource().getId();
+			
+			switch (sTheme) {	
+			case "GOLD":
+				sTheme = "sap_goldreflection";
+				break;
+			case "PLAT":
+				sTheme = "sap_platinum";
+				break;
+			case "BLUE":
+				sTheme = "sap_bluecrystal";
+				break;
+			case "HIGH":
+				sTheme = "sap_hcb";
+				break;
+
+			default:
+				break;
+			}
+			
+			sap.ui.getCore().applyTheme(sTheme);
+		}
+		
+	</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

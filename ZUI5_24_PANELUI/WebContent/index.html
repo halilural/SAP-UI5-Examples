@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+		//Buttons 
+		
+		var oButton_1 = new sap.ui.commons.Button();
+			oButton_1.setText("First Button");
+			
+		var oButton_2 = new sap.ui.commons.Button();
+			oButton_2.setText("Second Button");
+			
+		// Fix MatrixLayout
+		
+		var oMatrixFix = new sap.ui.commons.layout.MatrixLayout({
+				layoutFixed : true,
+				width : '800px',
+				columns : 2,
+				widths : [ '400px' , '400px' ]
+		});
+		
+		oMatrixFix.createRow(oButton_1,oButton_2);
+		
+		// Create instance of panel control
+		
+		var oPanel = new sap.ui.commons.Panel();
+		
+		// Title
+		
+		oPanel.setTitle(new sap.ui.commons.Title({
+			"text" : "Fix MatrixLayout"
+		}));
+		
+		// Add matrix layout to body of panel control
+		
+		oPanel.addContent(oMatrixFix);
+		
+		oPanel.placeAt("fix");
+			
+		</script>
+
+	</head>
+	
+	<body class="sapUiBody" role="application">
+		<div id="fix"></div>
+	</body>
+</html>

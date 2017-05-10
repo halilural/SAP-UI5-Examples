@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+			
+		// Layout for Form
+		
+		var oLayout = new sap.ui.commons.form.ResponsiveLayout(	);
+		
+		// Form element
+		
+		var oFormElement = new sap.ui.commons.form.FormElement();
+		
+		// Title element
+		
+		oFormElement.setLabel("Form Element");
+		
+		// Content FormElement
+		
+		oFormElement.addField(new sap.ui.commons.TextField({
+					value  : "Content FormElement",
+					layoutData : new sap.ui.commons.layout.ResponsiveFlowLayoutData({
+							weight : 1,
+							minWidth : 100
+					})
+		}));
+		
+		var oFormElement2 = new sap.ui.commons.form.FormElement();
+		
+		//Title FormElement
+		
+		oFormElement2.setLabel("Another FormElement");
+		
+		// Content FormElement
+		
+		oFormElement2.addField(new sap.ui.commons.TextField({
+					value : "Content FormElement 2",
+					layoutData : new sap.ui.commons.layout.ResponsiveFlowLayoutData({
+								weight	: 2, 
+								minWidth:  250
+					})
+		}));
+		
+		// Form Container
+		
+		var oFormCont = new sap.ui.commons.form.FormContainer();
+		
+		//Heading FormContainer
+		
+		oFormCont.setTitle("FormContainer");
+		
+		// Add FormElement 
+		
+		oFormCont.addFormElement(oFormElement);
+		oFormCont.addFormElement(oFormElement2);
+		
+		// Form
+		
+		var oForm = new sap.ui.commons.form.Form();
+		
+		// Title 
+		
+		oForm.setTitle("Form");
+		
+		// Set Layout 
+		
+		oForm.setLayout(oLayout);
+		
+		// Add container to form
+		
+		oForm.addFormContainer(oFormCont);
+		
+		oForm.placeAt("content");
+		
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

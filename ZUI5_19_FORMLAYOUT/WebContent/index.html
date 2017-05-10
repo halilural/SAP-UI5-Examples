@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+			// Layout for Form
+			
+			var oLayout = new sap.ui.commons.form.FormLayout();
+			
+			// Form element 
+			
+			var oFormElement = new sap.ui.commons.form.FormElement( );
+			
+			// Title Form element 
+			
+			oFormElement.setLabel("FormElement");
+			
+			// Content Form element
+			
+			oFormElement.addField(new sap.ui.commons.TextField({
+						value  : "Content Element"
+			}));
+			
+			// Form element 2 
+			
+			var oFormElement2 = new sap.ui.commons.form.FormElement();
+			
+			// Title Form Element 
+			
+			oFormElement2.setLabel("Another Form element");
+			
+			// Content Form Element 
+			
+			oFormElement2.addField(new sap.ui.commons.TextField({
+					value  : "Content Element 2 "	
+			}));
+			
+			// Form Container
+			
+			var oFormCont = new sap.ui.commons.form.FormContainer();
+			
+			//Heading FormContainer
+			
+			oFormCont.setTitle("Form Container");
+			
+			// Add FormElement
+			
+			oFormCont.addFormElement(oFormElement);
+			oFormCont.addFormElement(oFormElement2);
+			
+			// Form
+			
+			var oForm = new sap.ui.commons.form.Form();
+			
+			// Title
+			
+			oForm.setTitle("Form");
+			
+			// Set Layout
+			
+			oForm.setLayout(oLayout);
+			
+			// Add FormContainer to Form
+			
+			oForm.addFormContainer(oFormCont);
+			
+			oForm.placeAt("content");
+			
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

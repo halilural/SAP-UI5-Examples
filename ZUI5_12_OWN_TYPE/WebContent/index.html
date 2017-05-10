@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+			
+			// Own typing function 
+			
+			sap.ui.model.SimpleType.extend("mustafaHamit",{
+				formatValue : function(oValue){
+					return oValue;
+				},
+				parseValue : function(oValue){
+					return oValue;
+				},
+				validateValue : function(oValue){
+					//Only as test : write value in Console
+					console.log(oValue);
+				
+				if(!/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/.
+													test(oValue)){
+					throw new sap.ui.model.ValidateException(
+							"Password: At least eight characters , letters and numbers");
+				} else {
+					throw new sap.ui.model.ValidateException(
+							"Password valid");
+				}
+				
+				}
+			
+			});
+			
+			// Model
+			
+			var oModel = new sap.ui.model.json.JSONModel({
+				pwd : ""
+			});
+			
+			sap.ui.getCore().setModel(oModel);
+			
+			var oText = new sap.ui.commons.PasswordField({
+				value  : {
+					path : "/pwd",
+					type : new mustafaHamit()
+				}
+			});
+			
+			oText.placeAt("content");
+			
+			//Event Listener
+			sap.ui.getCore().attachValidationError(function(ex){
+				alert(ex.getParameter("exception").message);
+			});
+			
+			
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

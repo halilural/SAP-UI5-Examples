@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+		// Create instance of the model
+		
+		var oModel = new sap.ui.model.json.JSONModel();
+		
+		// Bind model to core
+		
+		sap.ui.getCore().setModel(oModel);
+		
+		
+		// Layout for Form 
+		
+		var oLayout = new sap.ui.commons.form.GridLayout({
+				singleColumn : true
+		});
+		
+		// Form Element
+		
+		var oFormElement = new sap.ui.commons.form.FormElement();
+		
+		// Title Element
+		
+		oFormElement.setLabel("First Name");
+		
+		//Content FormElement 
+		
+		oFormElement.addField(new sap.ui.commons.TextField({
+			// Bind value to model
+			layoutData : new sap.ui.commons.form.GridElementData({
+						hCells : "2"
+			})
+		}).bindValue({ path : "/first_name" })); // Bind value
+		
+	// Form2 Element
+		
+		var oFormElement2 = new sap.ui.commons.form.FormElement();
+		
+		// Title22 Element
+		
+		oFormElement.setLabel("Last Name");
+		
+		//Content2 FormElement 
+		
+		oFormElement.addField(new sap.ui.commons.TextField({
+			// Bind value to model
+			layoutData : new sap.ui.commons.form.GridElementData({
+						hCells : "2"
+			})
+		}).bindValue({ path : "/last_name" })); // Bind value
+		
+	// Submit Button
+	
+		var oFormElement3 =  new sap.ui.commons.form.FormElement();
+		
+	//Content FormElement
+	
+			oFormElement3.addField(new sap.ui.commons.Button({
+							"text" : "Submit",
+							"layoutData" : new sap.ui.commons.form.GridElementData({
+								hCells : "1",
+							}),
+							"press" : function(){
+								
+								var oResponse = jQuery.sap.sjax({
+										"url" : "/ui5",
+										"type" : "POST",
+										"data": sap.ui.getCore().getModel().getData()});
+							
+							}}));
+			
+			// Form Container
+			
+			var oFormCont = new sap.ui.commons.form.FormContainer();
+			
+			//Heading FormContainer
+			
+			oFormCont.setTitle("Enter Name");
+			
+			// Add FormElement 
+			
+			oFormCont.addFormElement(oFormElement);
+			oFormCont.addFormElement(oFormElement2);
+			oFormCont.addFormElement(oFormElement3);
+			
+			// Form
+			
+			var oForm = new sap.ui.commons.form.Form();
+			
+			// Title
+			
+			oForm.setTitle("Registration");
+			
+			// Set Layout 
+			
+			oForm.setLayout(oLayout);
+			
+			// Add Form Container to Form
+			
+			oForm.addFormContainer(oFormCont);
+			
+			oForm.placeAt("content");
+			
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

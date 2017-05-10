@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+		// Tabstrip Layout
+		
+		var oTabStrip = new sap.ui.commons.TabStrip();
+		
+		oTabStrip.setWidth("300px");
+		oTabStrip.setHeight("150px");
+		
+		// First Tab
+		
+		var oTextView = new sap.ui.commons.TextView({
+			text : "First Tab",
+			design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		var oTab = new sap.ui.commons.Tab();
+		
+		oTab.setTitle(new sap.ui.commons.Title({
+			text : "First"
+		}));
+		
+		oTab.addContent(oTextView);
+		
+		// Add tab to the layout 
+		
+		oTabStrip.addTab(oTab);
+		
+		// Second Tab
+		
+		var oTextView2 = new sap.ui.commons.TextView({
+				text : "Second tab",
+				design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		// Add tab to  the layout 
+		
+		var oTab2 = new sap.ui.commons.Tab();
+		oTab2.setTitle(new sap.ui.commons.Title({
+			text : "Second"
+		}));
+		
+		oTab2.addContent(oTextView2);
+		
+		oTabStrip.addTab(oTab2);
+		
+	// Third Tab
+		
+		var oTextView3 = new sap.ui.commons.TextView({
+				text : "Third tab",
+				design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		// Add tab to  the layout 
+		
+		var oTab3 = new sap.ui.commons.Tab();
+		oTab3.setTitle(new sap.ui.commons.Title({
+			text : "Third"
+		}));
+		
+		oTab3.addContent(oTextView3);
+		
+		oTabStrip.addTab(oTab3);
+		
+		oTabStrip.placeAt("content");
+		
+			
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

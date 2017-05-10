@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		<style type="text/css">
+		
+			div {
+			
+				border : 1px solid blue ;
+				box-shadow : 5px 5px 5px gray ;
+				-moz -box -shadow : 5px 5px 5px gray;
+				-webkit -box shadow : 5px 5px 5px gray;
+				
+			}
+		
+		</style>
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+			// Buttons 
+			
+			var oButton_1 = new sap.ui.commons.Button();
+				oButton_1.setText("First Button");
+				
+			var oButton_2 = new sap.ui.commons.Button();
+				oButton_2.setText("Second Button");
+			
+			var oButton_3 = new sap.ui.commons.Button();
+				oButton_3.setText("Third Button");
+				
+			var oButton_4 = new sap.ui.commons.Button();
+				oButton_4.setText("Fourth Button");
+				
+			var oButton_5 = new sap.ui.commons.Button();
+				oButton_5.setText("Fifth Button");
+				
+			var oButton_6 = new sap.ui.commons.Button();
+				oButton_6.setText("Sixth Button");
+				
+			var oButton_7 = new sap.ui.commons.Button();
+				oButton_7.setText("Seventh Button");
+		
+			// fixed MatrixLayout
+			
+			var oMatrixFix = new sap.ui.commons.layout.MatrixLayout({
+					layoutFixed : true ,
+					width : '800px'  ,
+					columns : 2 ,
+					widths : ['400px', '400px']
+			});
+			
+			oMatrixFix.createRow(oButton_1,oButton_2);
+			
+			oMatrixFix.placeAt("fix");
+			
+			//Matrix Layout with not fixed layout
+			
+			var oMatrixVar = new sap.ui.commons.layout.MatrixLayout({
+					layoutFixed : false ,
+			});
+			
+			oMatrixVar.createRow(oButton_3,oButton_4);
+			
+			oMatrixVar.placeAt("var");
+
+			//Merge cells
+			
+			var oMatrixCell =  new sap.ui.commons.layout.MatrixLayout({
+					layoutFixed : true , 
+					width : "100%",
+					columns : 2, 
+					widths : ['50%' , '50%']
+			});
+			
+			var oRow  = new sap.ui.commons.layout.MatrixLayoutRow();
+				oMatrixCell.addRow(oRow);
+			
+			var oCell =  new sap.ui.commons.layout.MatrixLayoutCell({
+					 colSpan : 2,
+			});
+			
+			// Center horizontally
+			
+			oCell.setHAlign(sap.ui.commons.layout.HAlign.Center);
+			
+			oCell.addContent(oButton_5);
+			
+			oRow.addCell(oCell);
+			
+			var oRow2 = new sap.ui.commons.layout.MatrixLayoutRow();
+			oMatrixCell.addRow(oRow2);
+			
+			var oCell2 = new sap.ui.commons.layout.MatrixLayoutCell();
+			
+			oCell2.addContent(oButton_6);
+			
+			oRow2.addCell(oCell2);
+			
+			oCell2.addContent(oButton_7);
+			
+			oRow2.addCell(oCell2);
+			
+			oMatrixCell.placeAt("cell");
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="fix"><h1>Fixed MatrixLayout</h1></div>
+		<div id="var"><h1>MatrixLayout with variable cell size</h1></div>
+		<div id="cell"><h1>Matrix Layout , first row with merged cells</h1></div>
+	</body>
+</html>

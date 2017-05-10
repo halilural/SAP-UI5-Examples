@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		
+		<style>
+		#goldButton {   background-color: #F0AB00;}
+		#goldButton2 {   background-color: #F0AB10;}
+		</style>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+		// Layout
+		
+		var oMatrix = new sap.ui.commons.layout.MatrixLayout({
+				layoutFixed : true,
+				width : '200px',
+				columns : 2 ,
+				widths:  [ '200px', '200px']	
+		});
+		
+		// Two buttons
+		
+		var oButton_1  = new sap.ui.commons.Button("goldButton");
+		oButton_1.setText("First Button");
+
+		
+		var oButton_2 = new sap.ui.commons.Button("goldButton2");
+		oButton_2.setText("Second Button");
+
+		// Bind button to layout 
+		
+		oMatrix.createRow(oButton_1,oButton_2);
+		
+		//bind layout to page
+		
+		oMatrix.placeAt("content");
+		
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

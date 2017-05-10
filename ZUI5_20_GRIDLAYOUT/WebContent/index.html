@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+		//Layout for Form
+		
+		var oLayout = new sap.ui.commons.form.GridLayout({
+					singleColumn : true
+		});
+		
+		var oLayout2 = new sap.ui.commons.form.GridLayout({
+					singleColumn : false
+		});
+		
+		// Form element
+		
+		var oFormElement = new sap.ui.commons.form.FormElement();
+		
+		// Title FormElement
+		
+		 oFormElement.setLabel("FormElement");
+		
+		// Content FormElement 
+		
+		oFormElement.addField(new sap.ui.commons.TextField({
+				value : "Content Element",
+				layoutData : new sap.ui.commons.form.GridElementData({
+					hCells : "2"
+				})
+		}));
+		
+		// another form element
+		
+		var oFormElement2 = new sap.ui.commons.form.FormElement();
+		
+		//title form element
+		
+		oFormElement2.setLabel("Another form element");
+		
+		// Content form element
+		
+		oFormElement2.addField(new sap.ui.commons.TextField({
+				value : "Content element 2",
+				layoutData : new sap.ui.commons.form.GridElementData({
+					hCells : "4",
+				})
+		}));
+		
+		// third form element
+		
+		var oFormElement3 = new sap.ui.commons.form.FormElement();
+		
+		//title form element
+		
+		oFormElement3.setLabel("third form element");
+		
+		// Content form element
+		
+		oFormElement3.addField(new sap.ui.commons.TextField({
+				value : "Content element 3",
+				layoutData : new sap.ui.commons.form.GridElementData({
+					hCells : "2",
+				})
+		}));
+		
+		// fourth form element
+		
+		var oFormElement4 = new sap.ui.commons.form.FormElement();
+		
+		//title form element
+		
+		oFormElement4.setLabel("Another form element");
+		
+		// Content form element
+		
+		oFormElement4.addField(new sap.ui.commons.TextField({
+				value : "Content element 4",
+				layoutData : new sap.ui.commons.form.GridElementData({
+					hCells : "4",
+				})
+		}));
+		
+		// Form Container
+		
+		var oFormCont = new sap.ui.commons.form.FormContainer();
+		
+		var oFomCont2 = new sap.ui.commons.form.FormContainer();
+		
+		// Heading  Form Container
+		
+		oFormCont.setTitle("FormContainer single column -- true");
+		
+		oFomCont2.setTitle("FormContainer single column -- false");
+		
+		// Add Form Element 
+		
+		oFormCont.addFormElement(oFormElement);
+		oFormCont.addFormElement(oFormElement2);
+		
+		oFomCont2.addFormElement(oFormElement3);
+		oFomCont2.addFormElement(oFormElement4);
+		
+		// Form
+		
+		var oForm = new sap.ui.commons.form.Form();
+		
+		// Form 2 
+		
+		var oForm2 = new sap.ui.commons.form.Form();
+		
+		// Title
+		
+		oForm.setTitle("Form");
+		oForm2.setTitle("Form 2 ");
+		
+		// Set Layout
+		
+		oForm.setLayout(oLayout);
+		oForm2.setLayout(oLayout2);
+		
+		// Add FormContainer Form
+		
+		oForm.addFormContainer(oFormCont);
+		oForm2.addFormContainer(oFomCont2);
+		
+		oForm.placeAt("content1");
+		oForm2.placeAt("content2");
+		
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content1"></div>
+		<div id="content2"></div>
+	</body>
+</html>

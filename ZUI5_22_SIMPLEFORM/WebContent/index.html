@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+// 		// Create instance of the model
+		
+// 		var oModel = new sap.ui.model.json.JSONModel();
+		
+// 		// Bind model to core
+		
+// 		sap.ui.getCore().setModel(oModel);
+		
+		// Constructor Simple Form
+		
+		var oSimpleForm = new sap.ui.commons.form.SimpleForm();
+		
+		// Create Form Container
+		
+		var oTitle = new sap.ui.commons.Title({ text : "Form Container"  });
+		
+		oSimpleForm.addContent(oTitle);
+		
+		// Form Element 
+		
+		var oLabel = new sap.ui.commons.Label({ text : "Form Element"  } );
+		
+		oSimpleForm.addContent(oLabel);
+		
+		// Content 
+		
+		var oText = new sap.ui.commons.TextField({ value : "Content FormElement" });
+		
+		oSimpleForm.addContent(oText);
+		
+		// Form Element 
+		
+		var oLabel = new sap.ui.commons.Label({ text : "Another FormElement"  });
+		
+		oSimpleForm.addContent(oLabel);
+		
+		// Content
+		
+		var oText = new sap.ui.commons.TextField({ value : "Content FormEelement2"  });
+		
+		oSimpleForm.addContent(oText);
+		
+		oSimpleForm.placeAt("content");
+			
+		</script>	
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

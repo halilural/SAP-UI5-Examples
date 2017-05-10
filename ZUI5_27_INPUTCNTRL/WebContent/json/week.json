@@ -1,0 +1,31 @@
+{
+	"week": [{
+		"we_day": "Monday",
+		"we_comment": "Garfield says: I hate Mondays!",
+		"we_rating": 1
+	}, {
+		"we_day": "Tuesday",
+		"we_comment": "At least it's not Tuesday",
+		"we_rating": 2
+	}, {
+		"we_day": "Wednesday",
+		"we_comment": "At least it's not Wednesday",
+		"we_rating": 3
+	}, {
+		"we_day": "Thursday",
+		"we_comment": "At least it's not Thursday",
+		"we_rating": 4
+	}, {
+		"we_day": "Friday",
+		"we_comment": "Finally , it is friday",
+		"we_rating": 5
+	}, {
+		"we_day": "Saturday",
+		"we_comment": "this is holiday , that's good!",
+		"we_rating": 5
+	}, {
+		"we_day": "Sunday",
+		"we_comment": "Omg , it is one of the best week's day",
+		"we_rating": 5
+	}]
+}

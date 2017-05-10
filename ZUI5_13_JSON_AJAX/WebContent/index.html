@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons,sap.ui.table"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+
+			// Create an instance of Json Model
+			
+			var oModel = new sap.ui.model.json.JSONModel();
+		
+			// Load json in model
+		
+			// the following method is named "loaddata" in which sets the json path. 
+			
+			// the ajax request to the sap backend server for taking crunch of data
+			
+			oModel.loadData("/ui5",
+						{ "application":"week",
+						  "action":"write"},                
+							false,                
+							"POST");
+			
+			sap.ui.getCore().setModel(oModel,"weekData");
+			
+			var oTable = new sap.ui.table.Table({
+				title : "Comment this week",
+				visibleRowCount : 7,
+				firstVisibleRow : 0
+			});
+			
+			// First column "Day"
+			
+			oTable.addColumn(
+				new sap.ui.table.Column({
+					label : new sap.ui.commons.Label({ text : "day" }),
+					template : new sap.ui.commons.TextView().bindProperty("text" , "we_day"),
+					width : "150px"
+				}));
+			
+			//Second column "Comment"
+			
+			oTable.addColumn(new sap.ui.table.Column({
+					label : new sap.ui.commons.Label({text : "Comment"}),
+					template : new sap.ui.commons.TextView().bindProperty("text", "we_comment"),
+					width : "300px"	
+			}));
+			
+			// abbreviated
+			
+			oTable.addColumn(new sap.ui.table.Column({
+					label : new sap.ui.commons.Label({text : "Ratings"}),
+					template : new sap.ui.commons.RatingIndicator().bindProperty("value", "we_rating"),
+					width : "100px"	
+			}));
+			
+			//Bind model to table control
+			
+			oTable.setModel(sap.ui.getCore().getModel("weekData"));
+			oTable.bindRows("/week");
+			
+			oTable.placeAt("content");
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

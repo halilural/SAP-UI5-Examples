@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+		<style type="text/css">
+		.sapUiVerticalSplitterBar {
+		
+			background-color: #000066;
+			
+		}
+		.sapUiHorizontalSplitterBar {
+		
+			background-color: #000066;
+			
+		}
+		
+		</style>		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+		
+		// Horizontal Splitter
+		
+		var oSplitterH = new sap.ui.commons.Splitter("splitterH");
+		
+		oSplitterH.setSplitterOrientation(sap.ui.commons.Orientation.horizontal);
+		
+ 		oSplitterH.setSplitterPosition("50%");
+		
+		oSplitterH.setWidth("683px");
+		
+		oSplitterH.setHeight("600px");
+		
+		// Text for first pane
+		
+		var oTextView = new sap.ui.commons.TextView({
+				text : "First pane horizontal" ,
+				design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		oSplitterH.addFirstPaneContent(oTextView);
+		
+		// Text for second pane 
+		
+		var oTextview2 = new sap.ui.commons.TextView({
+				text : "Second pane horizontal" ,
+				design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		oSplitterH.addSecondPaneContent(oTextview2);
+		
+		// Vertical Splitter
+		
+		var oSplitterV = new sap.ui.commons.Splitter("splitterV");
+			
+			oSplitterV.setSplitterOrientation(sap.ui.commons.Orientation.vertical);
+			
+			oSplitterV.setSplitterPosition("50%");
+			
+			oSplitterV.setWidth("1366px");
+			
+			oSplitterV.setHeight("600px");
+			
+		// Remove horizontal splitter in the first pane
+		
+			oSplitterV.addFirstPaneContent(oSplitterH);
+		
+		// Text for second pane
+		
+		var oTextView3 = new sap.ui.commons.TextView({
+				text : "Second pane vertical",
+				design : sap.ui.commons.TextViewDesign.H1
+		});
+		
+		oSplitterV.addSecondPaneContent(oTextView3);
+		
+		oSplitterV.placeAt("content");
+
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

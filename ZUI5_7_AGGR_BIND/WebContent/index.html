@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+				//Create instance of Json Model
+				
+				var oModel = new sap.ui.model.json.JSONModel();
+				
+				// Load Json in Model
+				
+				oModel.loadData("log/error.json");
+				
+				// Bind Model to core
+				
+				sap.ui.getCore().setModel(oModel);
+				
+				//Create template of message type 
+				
+				var oRowTemplate = new sap.ui.commons.Message({
+							text : "{description}",
+							type : "{level}"
+				});
+				
+				//Create RowRepeater and bind message template
+				
+				var oRowRepeater = new sap.ui.commons.RowRepeater();
+				
+					oRowRepeater.bindRows("/data",oRowTemplate);
+					
+					oRowRepeater.placeAt("content");
+				
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>
