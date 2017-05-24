@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		<title>Simple cross-domain Ajax request</title>
+		<style type="text/css">
+		
+		body {
+    			font-family: arial;
+			 }
+		#result 
+			{
+    			font-weight: bold;
+			}
+		</style>
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+	</head>
+	<body class="sapUiBody" role="application">
+	<button>Get IP address</button>
+	<div>
+    	<span>My IP address:</span>
+    	<span id='result'></span>
+	</div>
+	
+	<script>
+		
+		$('button').click(function () {
+			
+		/*
+		This code shows, how you can call a web service from a different domain, 
+		without getting security issues (same origin policy). This call will only work,
+		if your service supports JSONP.
+		*/
+		
+		// service url  
+		    var url = 'http://ip.jsontest.com/?callback=processJSON';
+
+		    $.ajax({
+		        url: url,
+		        jsonpCallback: 'processJSON',
+		        dataType: 'jsonp',
+		        success: function (result) {
+		            // process result  
+		            $('#result').html(result.ip);
+		        },
+		        error: function (e) {
+		             // log error in browser 
+		            console.log(e.message);
+		        }
+		    });
+		});
+		
+		</script>
+	</body>
+</html>
