@@ -137,7 +137,9 @@ var oTool = new sap.ui.ux3.ToolPopup({
 				}),
 		opener : oEvent.getSource()
 	});
+
 	oTool.open();
+	
 },
 
 addNotification : function(sText, sIcon) {

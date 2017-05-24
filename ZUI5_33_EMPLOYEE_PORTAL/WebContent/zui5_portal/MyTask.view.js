@@ -71,7 +71,7 @@ sap.ui.jsview("zui5_portal.MyTask", {
 			template : new sap.ui.commons.TextView({
 				text : {
 					path : "crea_date",
-					type : oDateType
+					type : oDateType	
 				}
 			}),
 			sortProperty : "crea_date",
